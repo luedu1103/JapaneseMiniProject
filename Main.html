@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- <div class="text"> -->
-        <p>Hola, pon lo que quieras:</p> 
-        <input type="text" id="autocomplete-input" onkeyup="autocomplete()" onblur="clearResults()">
-        <div id="autocomplete-results"></div>
-    <!-- </div> -->
+    <div class="text">
+        <p>Hola, pon lo que quieras:</p>
+        <input type="text" name="name" id="name_input" list="names_list">    
+    </div>
+    <div class="boton_class">
+        <button>Mandar texto</button>   
+    </div>
+    
 
     <script src="Main.js"></script>
 </body>

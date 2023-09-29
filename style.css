@@ -1,4 +1,10 @@
 .text{
-    position: absolute;
+    position: relative;
     margin-left: 43%;
+}
+
+.boton_class{
+    margin-left: 43%;
+    padding-top: 20px;  
+    position: relative;
 }
