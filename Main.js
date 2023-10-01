@@ -54,13 +54,29 @@ hiraganaRomanji[27] = 'tsu';
 hiraganaRomanji[31] = 'ji';
 hiraganaRomanji[32] = 'zu';
 hiraganaRomanji[42] = 'fu';
+//WEIRD CHARS
+hiraganaRomanji.push(
+    'kya', 'kyu', 'kyo',
+    'sha', 'shu', 'sho',
+    'cha', 'chu', 'cho',
+    'nya', 'nyu', 'nyo',
+    'hya', 'hyu', 'hyo',
+    'mya', 'myu', 'myo',
+    'rya', 'ryu', 'ryo',
+    'gya', 'gyu', 'gyo',
+    'ja', 'ju', 'jo',
+    'bya', 'byu', 'byo',
+    'pya', 'pyu', 'pyo',
+);
 
 console.log(hiraganaRomanji);
 
 // Variables del documento html
-var input = document.getElementById('name_input');
+const input = document.getElementById('name_input');
 
 // Devuelve en hiragana
+// NOT PROUD OF THIS X2
+// ES LA SEGUNDA VEZ QUE ME SIENTO MAL POR HACER ALGO ASÍ
 function mapToRomanji(valor) { 
     const lookupTable = [
         0x3042, 0x3044, 0x3046, 0x3048, 0x304A,  // a, i, u, e, o
@@ -75,9 +91,21 @@ function mapToRomanji(valor) {
         0x3070, 0x3073, 0x3076, 0x3079, 0x307C,  // ba, bi, bu, be, bo
         0x3071, 0x3074, 0x3077, 0x307A, 0x307D,  // pa, pi, pu, pe, po
         0x307E, 0x307F, 0x3080, 0x3081, 0x3082,  // ma, mi, mu, me, mo
-        0x3084, 0x3086, 0x3088,                 // ya, yu, yo
+        0x3084, 0x3086, 0x3088,                  // ya, yu, yo
         0x3089, 0x308A, 0x308B, 0x308C, 0x308D,  // ra, ri, ru, re, ro
-        0x308F, 0x3092, 0x3093,                 // wa, wo, n
+        0x308F, 0x3092, /*0x3093*/               // wa, wo, n
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo   
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with ki
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with shi 
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with chi
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with ni
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with hi
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with mi 
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with ri
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with gi   
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with bi
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with bi
+        0x3083, 0x3085, 0x3087,                   // litle ya, yu, yo // with pi
     ];
 
     if (valor >= 0 && valor <= hiraganaRomanji.length) {
@@ -87,7 +115,8 @@ function mapToRomanji(valor) {
 }
 
 function romanjiConverter(valor){
-    var romanji = valor.toLowerCase();
+    let romanji = valor;
+    console.log(romanji)
     if(hiraganaRomanji.includes(romanji)){
         romanji = mapToRomanji(hiraganaRomanji.indexOf(romanji));
         // console.log(romanji); // Devuelve en hiragana
@@ -95,11 +124,29 @@ function romanjiConverter(valor){
     return romanji
 }
 
+const weirdChars = [
+    'k', 's', 'c', 'n', 'h', 'm', 'r', 'g', 'j', 'b', 'p'
+];
+
+const hiraganaWeirdChars = [
+    0x304D, 0x3057, 0x3061, 0x306B, 0x3072, 0x307F, 0x308A, 0x304E, 0x3058, 0x3073, 0x3074
+];
+
 function stringDivider(input){
-    var newstring = '';
+    let newstring = '';
     for(let i = 0; i < input.length; i++){
         if(hiraganaRomanji.includes(input[i]+input[i+1]+input[i+2])){
             let momentaneus = input[i] + input[i+1] + input[i+2];
+            if(hiraganaRomanji.indexOf(momentaneus) > 69){
+                let weirdChar = '';
+                momentaneus = romanjiConverter(input[i] + input[i+1] + input[i+2]);
+                // console.log(momentaneus);
+                weirdChar = String.fromCodePoint(hiraganaWeirdChars[weirdChars.indexOf(input[i])]); // we can use litle ya yu yo with ja ju jo
+                console.log(weirdChar);
+                newstring += weirdChar + momentaneus;   
+                break;
+            }
+
             momentaneus = romanjiConverter(momentaneus);
             newstring += momentaneus;
             break;
@@ -119,17 +166,16 @@ function stringDivider(input){
             break;
             // console.log(newstring)
         }
-        else if(input[i] == 'n' && consonantes.includes(input.charCodeAt(i+1))){
+        else if(input[i] == 'n' && weirdChars.includes(input[i+1]) != false && consonantes.includes(input.charCodeAt(i+1))){
             let momentaneus = String.fromCodePoint(0x3093);
             newstring += momentaneus;
             break;
         } // Consistencia para que aparezcan na ni nu ne no...
-        else if(consonantes.includes(input[i]) && (hiraganaRomanji.includes(input[i+1] + input[i+2]))){
-            let momentaneus = "っ";
-            momentaneus += romanjiConverter(input[i+1] + input[i+2]);
-            newstring += momentaneus;
-            break;
-        }
+        else if(input[i] == input[i+1] && consonantes.includes(input.charCodeAt(i))){
+                let momentaneus = "っ";
+                newstring += momentaneus;
+                break;
+        }   
         else{
             newstring += input[i];
         }
@@ -138,13 +184,10 @@ function stringDivider(input){
 }
 
 input.addEventListener('input', function(event) {
-    // let inputValue = event.target.value;
-    // inputValue = inputValue.replace(inputValue, romanjiConverter(inputValue));
-    // event.target.value = inputValue;
     let inputValue = event.target.value;
     // console.log(inputValue);
     let change = '';
-    change += inputValue.replace(inputValue, stringDivider(inputValue));
+    change += inputValue.replace(inputValue, stringDivider(inputValue.toLowerCase()));
     event.target.value = change;
 });
 
