@@ -68,7 +68,6 @@ a {
 #output {
     position: absolute;
     top: 20px;
-    margin-top: 400px;
     padding: 20px;
     font-size: 50px;
     background-color: #00000025;
@@ -125,4 +124,30 @@ button:hover {
 
 button:active {
     background-color: #474747;
+}
+
+iframe
+{
+    display: none !important;
+    visibility: hidden !important;
+}
+
+@media (max-width: 768px) {
+    /* Styles for screens smaller than 768px */
+    body {
+        font-size: 13px; 
+    }
+
+    button,
+    a {
+        padding: 10px 20px;
+    }
+
+    #name_input {
+        margin-top: 350px;
+    }
+    
+    #output {
+        margin-top: 450px;
+    }
 }
