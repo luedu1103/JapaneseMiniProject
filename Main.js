@@ -71,7 +71,7 @@ hiraganaRomanji.push(
     'pya', 'pyu', 'pyo',
 );
 
-// console.log(hiraganaRomanji); // muestra el hira en romanji
+console.log(hiraganaRomanji); // muestra el hira en romanji
 
 // Devuelve en hiragana
 // NOT PROUD OF THIS X2
