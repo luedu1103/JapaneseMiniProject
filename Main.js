@@ -37,9 +37,11 @@ vocales.forEach(vocal => {
 consonantes.forEach(consonante => {
     vocales.forEach(vocal => {
         if((consonante == 0x0079 && vocal == 'e') || (consonante == 0x0079 && vocal == 'i')){
+            // Special cases for ye yi 
             return;
         }
         if((consonante == 0x0077 && vocal == 'e') || (consonante == 0x0077 && vocal == 'i') || (consonante == 0x0077 && vocal == 'u')){
+            // Special cases for wi wu we
             return;
         }
         hiraganaRomanji.push(String.fromCodePoint(consonante) + vocal);
@@ -47,13 +49,13 @@ consonantes.forEach(consonante => {
 });
 
 // Añadiendo y cambiando excepciones
-// hiraganaRomanji.push('n');
 hiraganaRomanji[16] = 'shi';
 hiraganaRomanji[26] = 'chi';
 hiraganaRomanji[27] = 'tsu';
 hiraganaRomanji[31] = 'ji';
 hiraganaRomanji[32] = 'zu';
 hiraganaRomanji[42] = 'fu';
+
 //WEIRD CHARS
 hiraganaRomanji.push(
     'kya', 'kyu', 'kyo',
@@ -69,10 +71,7 @@ hiraganaRomanji.push(
     'pya', 'pyu', 'pyo',
 );
 
-console.log(hiraganaRomanji);
-
-// Variables del documento html
-const input = document.getElementById('name_input');
+// console.log(hiraganaRomanji); // muestra el hira en romanji
 
 // Devuelve en hiragana
 // NOT PROUD OF THIS X2
@@ -103,9 +102,9 @@ function mapToRomanji(valor) {
         0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with mi 
         0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with ri
         0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with gi   
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with ji
         0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with bi
-        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with bi
-        0x3083, 0x3085, 0x3087,                   // litle ya, yu, yo // with pi
+        0x3083, 0x3085, 0x3087,                  // litle ya, yu, yo // with pi
     ];
 
     if (valor >= 0 && valor <= hiraganaRomanji.length) {
@@ -146,7 +145,7 @@ function stringDivider(input){
                 newstring += weirdChar + momentaneus;   
                 break;
             }
-
+            
             momentaneus = romanjiConverter(momentaneus);
             newstring += momentaneus;
             break;
@@ -175,13 +174,17 @@ function stringDivider(input){
                 let momentaneus = "っ";
                 newstring += momentaneus;
                 break;
-        }   
-        else{
-            newstring += input[i];
+            }   
+            else{
+                newstring += input[i];
         }
     }
     return newstring;
 }
+
+// Variables del documento html
+let input = document.getElementById('name_input');
+let outputElement = document.getElementById("output");
 
 input.addEventListener('input', function(event) {
     let inputValue = event.target.value;
@@ -189,6 +192,7 @@ input.addEventListener('input', function(event) {
     let change = '';
     change += inputValue.replace(inputValue, stringDivider(inputValue.toLowerCase()));
     event.target.value = change;
+    outputElement.textContent = input.value;
 });
 
 // This code is from the useful library, we want to achieve this
