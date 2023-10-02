@@ -39,25 +39,21 @@ a {
     text-decoration: none; /* Elimina el subrayado */
     color: inherit; /* Hereda el color del texto del padre, o puedes establecer un color específico aquí */
     justify-content: center;
-    font-size: 15px;
+    font-size: 3vh;
     padding: 30px;
 }
 
 .text {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    z-index: 1000;
-    margin-top: -200px;
+    justify-content: flex-start;
 }
 
 #name_input {
-    width: 300px;
-    height: 30px;
-    position: absolute;
-    top: 20px;
-    margin-top: 300px;
+    width: 70vw;
+    height: 5vh;
+    margin-bottom: 20px;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -66,22 +62,11 @@ a {
 }
 
 #output {
-    position: absolute;
-    top: 20px;
     padding: 20px;
     font-size: 50px;
     background-color: #00000025;
     border-radius: 5px;
-}
-
-#translation {
-    position: absolute;
-    top: 20px;
-    margin-top: 600px;
-    padding: 20px;
-    font-size: 50px;
-    background-color: #00000025;
-    border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 #google_translate_element {
@@ -132,22 +117,4 @@ iframe
     visibility: hidden !important;
 }
 
-@media (max-width: 768px) {
-    /* Styles for screens smaller than 768px */
-    body {
-        font-size: 13px; 
-    }
 
-    button,
-    a {
-        padding: 10px 20px;
-    }
-
-    #name_input {
-        margin-top: 350px;
-    }
-    
-    #output {
-        margin-top: 450px;
-    }
-}

@@ -11,24 +11,45 @@
     <title>Japanese Converter</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Serif JP', serif;
+        }
+
         .everything {
             display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: space-evenly; /* Updated property */
+            top: 10%;
+            position: absolute;
+            padding: 20px;
         }
+
         .hiragana-container {
             background-color: #ffffff;
             box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-            padding: 30px;
             border-radius: 10px;
             text-align: center;
-            margin-top: 150px;
+            flex: 1;
+            min-width: 150px;
+            padding: 20px;
         }
 
         .hiragana-item {
             margin: 10px;
             font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000000;
+            padding: 10px;
+            color: #ffffff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
     </style>
 </head>
@@ -114,9 +135,6 @@
             <div class="hiragana-item"><p>を - wo</p></div>
             <div class="hiragana-item"><p>ん - n</p></div>
         </div>
-    </div>
-    <div>
-        <h2>Estos son todos los hiragana que soporta el Japanese converter</h2>
     </div>
     
 </body>
