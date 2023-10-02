@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: 'Noto Serif JP', serif;
-    background: linear-gradient(to bottom, #e0e9e5, #d5ebeb);
+    /* background: linear-gradient(to bottom, #e0e9e5, #d5ebeb); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
