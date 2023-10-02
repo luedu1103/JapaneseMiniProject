@@ -81,13 +81,6 @@ a {
     /* z-index: 1000; */
 }
 
-.goog-te-banner-frame.skiptranslate {
-    display: none !important;
-    } 
-body {
-    top: 0px !important; 
-    }
-
 button {
     position: relative;
     background-color: #000000;
@@ -111,10 +104,10 @@ button:active {
     background-color: #474747;
 }
 
-iframe
+/* iframe
 {
     display: none !important;
     visibility: hidden !important;
 }
-
+ */
 
