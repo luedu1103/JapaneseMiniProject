@@ -11,14 +11,124 @@
     <title>Japanese Converter</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        body {
+            margin: 0;
+            font-family: 'Noto Serif JP', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
         #altWord {
-            position: absolute;
-            top: 20px;
-            margin-top: 100px;
+            margin-top: 120px;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            backdrop-filter: blur(10px);
+        }
+
+        .word-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .japanese-word {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .romanji {
+            font-size: 1.8rem;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .meaning {
+            font-size: 1.5rem;
+            color: #34495e;
+            font-weight: 500;
+            padding: 10px;
+            background-color: rgba(52, 152, 219, 0.1);
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        #generator {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        #generator:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+            background: linear-gradient(45deg, #2980b9, #3498db);
+        }
+
+        #generator:active {
+            transform: translateY(0);
+        }
+
+        .instructions {
+            margin-top: 20px;
             padding: 20px;
-            font-size: 50px;
-            background-color: #00000025;
-            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .instructions h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .japanese-word {
+                font-size: 2.5rem;
+            }
+            
+            .romanji {
+                font-size: 1.4rem;
+            }
+            
+            .meaning {
+                font-size: 1.2rem;
+            }
+            
+            #altWord {
+                margin-top: 100px;
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -28,8 +138,17 @@
         <a href="Hiragana.html">Aprende Hiragana</a>
         <a href="Generacion.html">Generación de palabras aleatorias</a>
     </nav>
+    
     <div id="altWord"></div>
-    <div> <button id="generator">Generate</button></div>
+    
+    <button id="generator">Generar Nueva Palabra</button>
+    
+    <div class="instructions">
+        <h3>¿Cómo usar?</h3>
+        <p>Haz clic en "Generar Nueva Palabra" para ver una palabra japonesa aleatoria con su pronunciación en romanji y su significado en español.</p>
+        <p>¡Perfecto para expandir tu vocabulario japonés!</p>
+    </div>
+    
     <script src="Generator.js"></script>
 </body>
 </html>

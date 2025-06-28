@@ -1,21 +1,108 @@
-let hiraganaDictionary = {
-    'あ': 0x3042, 'い': 0x3044, 'う': 0x3046, 'え': 0x3048, 'お': 0x304A,
-    'か': 0x304B, 'き': 0x304D, 'く': 0x304F, 'け': 0x3051, 'こ': 0x3053,
-    'が': 0x304C, 'ぎ': 0x304E, 'ぐ': 0x3050, 'げ': 0x3052, 'ご': 0x3054,
-    'さ': 0x3055, 'し': 0x3057, 'す': 0x3059, 'せ': 0x305B, 'そ': 0x305D,
-    'ざ': 0x3056, 'じ': 0x3058, 'ず': 0x305A, 'ぜ': 0x305C, 'ぞ': 0x305E,
-    'た': 0x305F, 'ち': 0x3061, 'つ': 0x3064, 'て': 0x3066, 'と': 0x3068,
-    'だ': 0x3060, 'ぢ': 0x3062, 'づ': 0x3065, 'で': 0x3067, 'ど': 0x3069,
-    'な': 0x306A, 'に': 0x306B, 'ぬ': 0x306C, 'ね': 0x306D, 'の': 0x306E,
-    'は': 0x306F, 'ひ': 0x3072, 'ふ': 0x3075, 'へ': 0x3078, 'ほ': 0x307B,
-    'ば': 0x3070, 'び': 0x3073, 'ぶ': 0x3076, 'べ': 0x3079, 'ぼ': 0x307C,
-    'ぱ': 0x3071, 'ぴ': 0x3074, 'ぷ': 0x3077, 'ぺ': 0x307A, 'ぽ': 0x307D,
-    'ま': 0x307E, 'み': 0x307F, 'む': 0x3080, 'め': 0x3081, 'も': 0x3082,
-    'や': 0x3084, 'ゆ': 0x3086, 'よ': 0x3088,
-    'ら': 0x3089, 'り': 0x308A, 'る': 0x308B, 'れ': 0x308C, 'ろ': 0x308D,
-    'わ': 0x308F, 'ゐ': 0x3090, 'を': 0x3092, 'ん': 0x3093,
-    'ゃ': 0x3083, 'ゅ': 0x3085, 'ょ': 0x3087,
-};
+// Dictionary of Japanese words with hiragana, romanji, and Spanish meanings
+const japaneseWords = [
+    { hiragana: "こんにちは", romanji: "konnichiwa", meaning: "hola" },
+    { hiragana: "ありがとう", romanji: "arigatou", meaning: "gracias" },
+    { hiragana: "さようなら", romanji: "sayounara", meaning: "adiós" },
+    { hiragana: "おはよう", romanji: "ohayou", meaning: "buenos días" },
+    { hiragana: "こんばんは", romanji: "konbanwa", meaning: "buenas noches" },
+    { hiragana: "すみません", romanji: "sumimasen", meaning: "disculpe / perdón" },
+    { hiragana: "はい", romanji: "hai", meaning: "sí" },
+    { hiragana: "いいえ", romanji: "iie", meaning: "no" },
+    { hiragana: "わたし", romanji: "watashi", meaning: "yo" },
+    { hiragana: "あなた", romanji: "anata", meaning: "tú / usted" },
+    { hiragana: "かれ", romanji: "kare", meaning: "él" },
+    { hiragana: "かのじょ", romanji: "kanojo", meaning: "ella" },
+    { hiragana: "みず", romanji: "mizu", meaning: "agua" },
+    { hiragana: "たべもの", romanji: "tabemono", meaning: "comida" },
+    { hiragana: "のみもの", romanji: "nomimono", meaning: "bebida" },
+    { hiragana: "いえ", romanji: "ie", meaning: "casa" },
+    { hiragana: "がっこう", romanji: "gakkou", meaning: "escuela" },
+    { hiragana: "しごと", romanji: "shigoto", meaning: "trabajo" },
+    { hiragana: "ともだち", romanji: "tomodachi", meaning: "amigo" },
+    { hiragana: "かぞく", romanji: "kazoku", meaning: "familia" },
+    { hiragana: "おかあさん", romanji: "okaasan", meaning: "madre" },
+    { hiragana: "おとうさん", romanji: "otousan", meaning: "padre" },
+    { hiragana: "あに", romanji: "ani", meaning: "hermano mayor" },
+    { hiragana: "あね", romanji: "ane", meaning: "hermana mayor" },
+    { hiragana: "おとうと", romanji: "otouto", meaning: "hermano menor" },
+    { hiragana: "いもうと", romanji: "imouto", meaning: "hermana menor" },
+    { hiragana: "ねこ", romanji: "neko", meaning: "gato" },
+    { hiragana: "いぬ", romanji: "inu", meaning: "perro" },
+    { hiragana: "とり", romanji: "tori", meaning: "pájaro" },
+    { hiragana: "さかな", romanji: "sakana", meaning: "pez" },
+    { hiragana: "ほん", romanji: "hon", meaning: "libro" },
+    { hiragana: "えんぴつ", romanji: "enpitsu", meaning: "lápiz" },
+    { hiragana: "かみ", romanji: "kami", meaning: "papel" },
+    { hiragana: "つくえ", romanji: "tsukue", meaning: "escritorio" },
+    { hiragana: "いす", romanji: "isu", meaning: "silla" },
+    { hiragana: "まど", romanji: "mado", meaning: "ventana" },
+    { hiragana: "ドア", romanji: "doa", meaning: "puerta" },
+    { hiragana: "でんわ", romanji: "denwa", meaning: "teléfono" },
+    { hiragana: "てれび", romanji: "terebi", meaning: "televisión" },
+    { hiragana: "くるま", romanji: "kuruma", meaning: "coche" },
+    { hiragana: "でんしゃ", romanji: "densha", meaning: "tren" },
+    { hiragana: "ひこうき", romanji: "hikouki", meaning: "avión" },
+    { hiragana: "じてんしゃ", romanji: "jitensha", meaning: "bicicleta" },
+    { hiragana: "あか", romanji: "aka", meaning: "rojo" },
+    { hiragana: "あお", romanji: "ao", meaning: "azul" },
+    { hiragana: "きいろ", romanji: "kiiro", meaning: "amarillo" },
+    { hiragana: "みどり", romanji: "midori", meaning: "verde" },
+    { hiragana: "しろ", romanji: "shiro", meaning: "blanco" },
+    { hiragana: "くろ", romanji: "kuro", meaning: "negro" },
+    { hiragana: "おおきい", romanji: "ookii", meaning: "grande" },
+    { hiragana: "ちいさい", romanji: "chiisai", meaning: "pequeño" },
+    { hiragana: "たかい", romanji: "takai", meaning: "alto / caro" },
+    { hiragana: "ひくい", romanji: "hikui", meaning: "bajo" },
+    { hiragana: "あたらしい", romanji: "atarashii", meaning: "nuevo" },
+    { hiragana: "ふるい", romanji: "furui", meaning: "viejo" },
+    { hiragana: "きれい", romanji: "kirei", meaning: "hermoso / limpio" },
+    { hiragana: "きたない", romanji: "kitanai", meaning: "sucio" },
+    { hiragana: "おいしい", romanji: "oishii", meaning: "delicioso" },
+    { hiragana: "まずい", romanji: "mazui", meaning: "malo (sabor)" },
+    { hiragana: "あつい", romanji: "atsui", meaning: "caliente" },
+    { hiragana: "さむい", romanji: "samui", meaning: "frío" },
+    { hiragana: "たべる", romanji: "taberu", meaning: "comer" },
+    { hiragana: "のむ", romanji: "nomu", meaning: "beber" },
+    { hiragana: "みる", romanji: "miru", meaning: "ver / mirar" },
+    { hiragana: "きく", romanji: "kiku", meaning: "escuchar / oír" },
+    { hiragana: "はなす", romanji: "hanasu", meaning: "hablar" },
+    { hiragana: "よむ", romanji: "yomu", meaning: "leer" },
+    { hiragana: "かく", romanji: "kaku", meaning: "escribir" },
+    { hiragana: "いく", romanji: "iku", meaning: "ir" },
+    { hiragana: "くる", romanji: "kuru", meaning: "venir" },
+    { hiragana: "かえる", romanji: "kaeru", meaning: "regresar" },
+    { hiragana: "ねる", romanji: "neru", meaning: "dormir" },
+    { hiragana: "おきる", romanji: "okiru", meaning: "despertarse" },
+    { hiragana: "はたらく", romanji: "hataraku", meaning: "trabajar" },
+    { hiragana: "べんきょう", romanji: "benkyou", meaning: "estudiar" },
+    { hiragana: "あそぶ", romanji: "asobu", meaning: "jugar" }
+];
 
+// Function to generate a random Japanese word
+function generateRandomWord() {
+    const randomIndex = Math.floor(Math.random() * japaneseWords.length);
+    return japaneseWords[randomIndex];
+}
 
+// Function to display the word and meaning
+function displayWord() {
+    const randomWord = generateRandomWord();
+    const altWordElement = document.getElementById('altWord');
+    
+    altWordElement.innerHTML = `
+        <div class="word-container">
+            <div class="japanese-word">${randomWord.hiragana}</div>
+            <div class="romanji">${randomWord.romanji}</div>
+            <div class="meaning">${randomWord.meaning}</div>
+        </div>
+    `;
+}
 
+// Add event listener to the generate button
+document.addEventListener('DOMContentLoaded', function() {
+    const generateButton = document.getElementById('generator');
+    generateButton.addEventListener('click', displayWord);
+    
+    // Generate an initial word when the page loads
+    displayWord();
+});
