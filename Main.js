@@ -75,6 +75,7 @@ console.log(hiraganaRomanji); // muestra el hira en romanji
 
 // Devuelve en hiragana
 // NOT PROUD OF THIS X2
+// STILL NOT PROUD OF THIS
 // ES LA SEGUNDA VEZ QUE ME SIENTO MAL POR HACER ALGO ASÍ
 function mapToRomanji(valor) { 
     const lookupTable = [
@@ -194,7 +195,3 @@ input.addEventListener('input', function(event) {
     event.target.value = change;
     outputElement.textContent = input.value;
 });
-
-// This code is from the useful library, we want to achieve this
-// var textInput = document.getElementById('name_input');
-//     wanakana.bind(textInput, /* options */); 
